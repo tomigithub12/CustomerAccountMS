@@ -28,6 +28,14 @@ dependencies {
 	// Mapstruct to handle mappers
 	implementation 'org.mapstruct:mapstruct:1.5.3.Final'
 	annotationProcessor 'org.mapstruct:mapstruct-processor:1.5.3.Final'
+
+	//RabbitMQ
+	implementation 'org.springframework.boot:spring-boot-starter-amqp'
+	testImplementation 'io.projectreactor:reactor-test'
+	testImplementation 'org.springframework.amqp:spring-rabbit-test'
+
+	//JSON
+	implementation 'org.json:json:20210307'
 }
 
 tasks.named('test') {
