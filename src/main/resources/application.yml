@@ -4,9 +4,10 @@ spring:
         port: 5672
         username: guest
         password: guest
-    main:
-        web-application-type: none
     data:
         mongodb:
-            database: Users
+            database: Customer
             uri: mongodb+srv://tester:testerpw@customers.4lge2rv.mongodb.net/?retryWrites=true&w=majority
+
+#server:
+#    port: 8085

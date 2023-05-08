@@ -18,6 +18,13 @@ public class RabbitMQConfig {
     public static final String BOOKED_CARS_MESSAGE_QUEUE = "bookedCars_msg_queue";
     public static final String CUSTOMERID_MESSAGE_QUEUE = "customerID_msg_queue";
 
+    public static final String AUTH_EXCHANGE = "auth_exchange";
+    public static final String GENERATE_TOKEN_MESSAGE_QUEUE = "generateToken_msg_queue";
+
+    public static final String GENERATE_REFRESH_TOKEN_MESSAGE_QUEUE = "generateToken_msg_queue";
+
+    public static final String CUSTOMER_EXISTENCE_MESSAGE_QUEUE = "customerExistence_msg_queue";
+
 
     @Bean
     Queue msgQueue1() {
@@ -42,6 +49,24 @@ public class RabbitMQConfig {
     }
 
     @Bean
+    Queue msgQueue4() {
+
+        return new Queue(GENERATE_TOKEN_MESSAGE_QUEUE);
+    }
+
+    @Bean
+    Queue msgQueue5() {
+
+        return new Queue(GENERATE_REFRESH_TOKEN_MESSAGE_QUEUE);
+    }
+
+    @Bean
+    Queue msgQueue6() {
+
+        return new Queue(CUSTOMER_EXISTENCE_MESSAGE_QUEUE);
+    }
+
+    @Bean
     TopicExchange exchange() {
 
         return new TopicExchange(CARS_EXCHANGE);
@@ -51,6 +76,12 @@ public class RabbitMQConfig {
     TopicExchange exchange2() {
 
         return new TopicExchange(CUSTOMER_EXCHANGE);
+    }
+
+    @Bean
+    TopicExchange exchange3() {
+
+        return new TopicExchange(AUTH_EXCHANGE);
     }
 
     @Bean
@@ -69,6 +100,25 @@ public class RabbitMQConfig {
 
         return BindingBuilder.bind(msgQueue3()).to(exchange2()).with(CUSTOMERID_MESSAGE_QUEUE);
     }
+
+    @Bean
+    Binding msgBinding4() {
+
+        return BindingBuilder.bind(msgQueue4()).to(exchange3()).with(GENERATE_TOKEN_MESSAGE_QUEUE);
+    }
+
+    @Bean
+    Binding msgBinding5() {
+
+        return BindingBuilder.bind(msgQueue4()).to(exchange3()).with(GENERATE_REFRESH_TOKEN_MESSAGE_QUEUE);
+    }
+
+    @Bean
+    Binding msgBinding6() {
+
+        return BindingBuilder.bind(msgQueue6()).to(exchange3()).with(CUSTOMER_EXISTENCE_MESSAGE_QUEUE);
+    }
+
 
 
     @Bean
