@@ -14,7 +14,7 @@ import java.util.ArrayList;
 @NoArgsConstructor
 @Builder
 @AllArgsConstructor
-@Document(collection = "Customer")
+@Document(collection = "customers")
 public class Customer {
 
     @Id
